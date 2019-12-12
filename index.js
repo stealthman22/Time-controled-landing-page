@@ -13,6 +13,7 @@ function showTime() {
         sec = today.getSeconds();
 
     // Set AM or PM
+    const showAmPm = true;
     const amPm = hour >= 12 ? 'PM' : 'AM';
 
     // Use 12 hour format
@@ -20,7 +21,8 @@ function showTime() {
 
     // Output/ Display the time
     // This is now a type of highe order function
-    time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}`;
+    time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)
+        } ${showAmPm ? amPm : ''}`;
 
     // Update time every second
     setTimeout(showTime, 1000);
@@ -42,6 +44,7 @@ function setBg() {
     if (hour < 12) {
         // Morning
         document.body.style.backgroundImage = "url('../Time-controled-landing-page/img/aerial-photography-of-grass-field-3071758.jpg')"
+        document.body.style.backgroundSize = 'no-repeat center center fixed overflow: hidden;';
         greeting.textContent = 'Good Morning';
     } else if (hour < 18) {
         // Afternoon
@@ -52,13 +55,70 @@ function setBg() {
         document.body.style.backgroundImage = "url('../Time-controled-landing-page/img/white-and-black-moon-with-black-skies-and-body-of-water-748626.jpg')"
         greeting.textContent = 'Good Evening';
         document.body.style.color = '#ffffff';
-        document.body.style.opacity = 1;
+        document.body.style.backgroundSize = 'no-repeat center center fixed overflow: hidden;';
+        // document.h2.style.opacity = '1';
     }
 }
 
-// Run the time
+
+
+// Get Name
+function getName() {
+    if (localStorage.getItem('name') === null) {
+        name.textContent = '[Enter Name]';
+    } else {
+        name.textContent = localStorage.getItem('name');
+    }
+}
+
+// Update Name
+function updateName(e) {
+    if (e.type === 'keypress') {
+        // check for key enter
+        if (e.which == 13 || e.keycode == 13) {
+            localStorage.setItem('name', e.target.innerText);
+            name.blur();
+        }
+    } else {
+        // update name in local storage
+        localStorage.setItem('name', e.target.innerText);
+    }
+}
+
+// Get Focus
+function getFocus() {
+    if (localStorage.getItem('focus') === null) {
+        focus.textContent = '[Enter Focus]';
+    } else {
+        focus.textContent = localStorage.getItem('focus');
+    }
+}
+
+// Update Focus
+function updateFocus(e) {
+    if (e.type === 'keypress') {
+        // check for key enter
+        if (e.which == 13 || e.keycode == 13) {
+            localStorage.setItem('focus', e.target.innerText);
+            focus.blur();
+        }
+    } else {
+        // update focus in local storage
+        localStorage.setItem('focus', e.target.innerText);
+    }
+}
+
+// Updating contenteditable
+name.addEventListener('keypress', updateName);
+name.addEventListener('blur', updateName)
+focus.addEventListener('keypress', updateFocus);
+
+
+// Run functions
 showTime();
 setBg();
+getName();
+getFocus();
 
 
 
