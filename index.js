@@ -8,7 +8,7 @@ const time = document.getElementById('time'),
 // Show Time ( recursive function)
 function showTime() {
     // let today = new Date()
-    let today = new Date(2019, 12, 12, 20, 33, 30),
+    let today = new Date(),
         hour = today.getHours(),
         min = today.getMinutes(),
         sec = today.getSeconds();
@@ -40,7 +40,7 @@ function addZero(n) {
 
 function setBg() {
     // let today = new Date(),
-    let today = new Date(2019, 12, 12, 20, 33, 30),
+    let today = new Date(),
         hour = today.getHours();
     if (hour < 12) {
         // Morning
@@ -68,9 +68,9 @@ function setBg() {
 // Get Name
 function getName() {
     if (localStorage.getItem('name') === null) {
-        name.innerText = '[Enter Name]';
+        name.textContent = '';
     } else {
-        name.innerText = localStorage.getItem('name');
+        name.textContent = localStorage.getItem('name');
     }
 }
 
@@ -91,9 +91,9 @@ function updateName(e) {
 // Get Focus
 function getFocus() {
     if (localStorage.getItem('focus') === null) {
-        focus.innerText = '[Enter Focus]';
+        focus.textContent = '';
     } else {
-        focus.innerText = localStorage.getItem('focus');
+        focus.textContent = localStorage.getItem('focus');
     }
 }
 
