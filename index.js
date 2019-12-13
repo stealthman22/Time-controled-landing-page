@@ -7,7 +7,8 @@ const time = document.getElementById('time'),
 
 // Show Time ( recursive function)
 function showTime() {
-    let today = new Date(),
+    // let today = new Date()
+    let today = new Date(2019, 12, 12, 20, 33, 30),
         hour = today.getHours(),
         min = today.getMinutes(),
         sec = today.getSeconds();
@@ -38,24 +39,26 @@ function addZero(n) {
 // Set dynamic background image
 
 function setBg() {
-    let today = new Date(),
+    // let today = new Date(),
+    let today = new Date(2019, 12, 12, 20, 33, 30),
         hour = today.getHours();
-
     if (hour < 12) {
         // Morning
-        document.body.style.backgroundImage = "url('../Time-controled-landing-page/img/aerial-photography-of-grass-field-3071758.jpg')"
-        document.body.style.backgroundSize = 'no-repeat center center fixed overflow: hidden;';
+        document.body.style.background = "url('../Time-controled-landing-page/img/aerial-photography-of-grass-field') no-repeat center center fixed"
+        document.body.style.color = '#ffffff';
+        // document.body.style.backgroundSize = 'no-repeat center center fixed';
         greeting.textContent = 'Good Morning';
     } else if (hour < 18) {
         // Afternoon
-        document.body.style.backgroundImage = "url('../Time-controled-landing-page/img/afternoon-cascade-creek-environment-1174108.jpg')"
+        document.body.style.background = "url('../Time-controled-landing-page/img/afternoon-cascade-creek-environment-1174108 (1).jpg') no-repeat center center fixed"
         greeting.textContent = 'Good Afternoon';
+        //  document.body.style.color = '#ffffff';
     } else {
         // Evening
-        document.body.style.backgroundImage = "url('../Time-controled-landing-page/img/white-and-black-moon-with-black-skies-and-body-of-water-748626.jpg')"
+        document.body.style.background = "url('../Time-controled-landing-page/img/white-and-black-moon-with-black-skies-and-body-of-water-748626 (1).jpg') no-repeat center center fixed"
         greeting.textContent = 'Good Evening';
         document.body.style.color = '#ffffff';
-        document.body.style.backgroundSize = 'no-repeat center center fixed overflow: hidden;';
+
         // document.h2.style.opacity = '1';
     }
 }
@@ -65,9 +68,9 @@ function setBg() {
 // Get Name
 function getName() {
     if (localStorage.getItem('name') === null) {
-        name.textContent = '[Enter Name]';
+        name.innerText = '[Enter Name]';
     } else {
-        name.textContent = localStorage.getItem('name');
+        name.innerText = localStorage.getItem('name');
     }
 }
 
@@ -88,9 +91,9 @@ function updateName(e) {
 // Get Focus
 function getFocus() {
     if (localStorage.getItem('focus') === null) {
-        focus.textContent = '[Enter Focus]';
+        focus.innerText = '[Enter Focus]';
     } else {
-        focus.textContent = localStorage.getItem('focus');
+        focus.innerText = localStorage.getItem('focus');
     }
 }
 
@@ -112,7 +115,7 @@ function updateFocus(e) {
 name.addEventListener('keypress', updateName);
 name.addEventListener('blur', updateName)
 focus.addEventListener('keypress', updateFocus);
-
+focus.addEventListener('blur', updateFocus);
 
 // Run functions
 showTime();
