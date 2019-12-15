@@ -130,6 +130,6 @@ getFocus();
 /*
 1. In set bg we did not set time to 12 hour clock,  so that we can really know what time of day we are working with
 
-
+// 
 
 */
