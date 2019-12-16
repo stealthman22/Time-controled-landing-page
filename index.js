@@ -68,7 +68,7 @@ function setBg() {
 // Get Name
 function getName() {
     if (localStorage.getItem('name') === null) {
-        name.textContent = '';
+        name.textContent = '[Enter Focus]';
     } else {
         name.textContent = localStorage.getItem('name');
     }
@@ -88,10 +88,12 @@ function updateName(e) {
     }
 }
 
+
+
 // Get Focus
 function getFocus() {
     if (localStorage.getItem('focus') === null) {
-        focus.textContent = '';
+        focus.textContent = '[Enter Focus]';
     } else {
         focus.textContent = localStorage.getItem('focus');
     }
@@ -111,11 +113,20 @@ function updateFocus(e) {
     }
 }
 
+/* function clearFocus() {
+  document.getElementById('focus').addEventListener('onclick')
+} */
+
+focus.addEventListener('onclick', function clearFocus() {
+    document.getElementById('focus').reset()
+})
+
 // Updating contenteditable
 name.addEventListener('keypress', updateName);
 name.addEventListener('blur', updateName)
 focus.addEventListener('keypress', updateFocus);
 focus.addEventListener('blur', updateFocus);
+
 
 // Run functions
 showTime();
@@ -130,6 +141,6 @@ getFocus();
 /*
 1. In set bg we did not set time to 12 hour clock,  so that we can really know what time of day we are working with
 
-// 
+//
 
 */
