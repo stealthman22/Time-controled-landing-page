@@ -3,12 +3,12 @@
 const time = document.getElementById('time'),
     greeting = document.getElementById('greeting'),
     name = document.getElementById('name'),
-    focus = document.getElementById('focus');
-
+    focus = documet.getElementById('focus');
+console.log(greeting)
 // Show Time ( recursive function)
 function showTime() {
-    // let today = new Date()
     let today = new Date(),
+        //  let today = new Date(2019, 11, 30, 13, 00, 12),
         hour = today.getHours(),
         min = today.getMinutes(),
         sec = today.getSeconds();
@@ -21,7 +21,7 @@ function showTime() {
     hour = hour % 12 || 12;
 
     // Output/ Display the time
-    // This is now a type of highe order function
+    // This is now a type of higher order function
     time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)
         } ${showAmPm ? amPm : ''}`;
 
@@ -32,15 +32,15 @@ function showTime() {
 // Add Zero to min and sec when needed
 // n is min or sec
 function addZero(n) {
-    // add a nuber in the base 10
+    // add a number in the base 10
     return (parseInt(n, 10) < 10 ? '0' : '') + n;
 }
 
 // Set dynamic background image
 
 function setBg() {
-    // let today = new Date(),
     let today = new Date(),
+        // let today = new Date(2019, 11, 30, 13, 00, 12),
         hour = today.getHours();
     if (hour < 12) {
         // Morning
